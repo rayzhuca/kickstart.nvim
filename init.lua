@@ -182,7 +182,6 @@ do
   --  See `:help vim.keymap.set()`
   
   vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Escape insert mode' })
-  vim.keymap.set('i', 'kj', '<Esc>', { desc = 'Escape insert mode' })
 
   -- Clear highlights on search when pressing <Esc> in normal mode
   --  See `:help hlsearch`
@@ -429,6 +428,10 @@ do
   vim.pack.add { gh 'loctvl842/monokai-pro.nvim' }
   require("monokai-pro").setup {
     filter = 'spectrum',
+    override_palette = function()
+      -- Match Ghostty's iTerm2 Smoooooth theme background.
+      return { background = '#15191f' }
+    end,
   }
 
   -- Load the colorscheme here.
@@ -1021,7 +1024,7 @@ do
   -- NOTE: You can add your own plugins, configuration, etc. in `lua/custom/plugins/*.lua`.
   --
   -- For independent modules, uncomment the convenience loader:
-  -- require 'custom.plugins'
+  require 'custom.plugins'
   --
   -- `custom.plugins` automatically loads files from that directory, but their
   -- order is unspecified. If plugins depend on each other, keep them in the same
